@@ -1,0 +1,64 @@
+import React from "react";
+import { AiOutlineGithub, AiOutlineLinkedin, AiOutlineTwitter } from "react-icons/ai";
+import { HiOutlineMail } from "react-icons/hi";
+
+const Connect = () => {
+  const links = [
+    {
+      name: "GitHub",
+      icon: <AiOutlineGithub className="w-6 h-6" />,
+      url: "https://github.com/SumanX08",
+      color: "#ffffff",
+    },
+    {
+      name: "LinkedIn",
+      icon: <AiOutlineLinkedin className="w-6 h-6" />,
+      url: "https://www.linkedin.com/in/bagal-suman-preet-singh-4257b22b6",
+      color: "#0A66C2",
+    },
+    {
+      name: "Twitter",
+      icon: <AiOutlineTwitter className="w-6 h-6" />,
+      url: "https://x.com/Suman_twts",
+      color: "#1DA1F2",
+    },
+    {
+      name: "Email",
+      icon: <HiOutlineMail className="w-6 h-6" />,
+      url: "mailto:sumanpreetsingh998@gmail.com",
+      color: "#EF4444",
+    },
+  ];
+
+  return (
+    <div className="mt-12">
+      <h1 className="text-3xl font-bold text-gray-200 mb-8 text-center">
+        Connect with Me
+      </h1>
+
+      <div className="flex flex-col md:flex-row justify-around">
+        {/* Left: Contact Form */}
+        
+
+   
+<div className=" grid grid-cols-2  gap-8 place-items-center justify-around">
+  {links.map((link, index) => (
+    <a
+      key={index}
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={link.name}
+      className="flex flex-col   items-center justify-center w-28 h-28 rounded-lg shadow-[0_0_10px_#6b7280] hover:scale-110 transition-transform bg-black/30"
+    >
+      {React.cloneElement(link.icon, { color: link.color, size: 32 })}
+      <span className="text-gray-200 mt-2 text-sm">{link.name}</span>
+    </a>
+  ))}
+</div>
+      </div>
+    </div>
+  );
+};
+
+export default Connect;
