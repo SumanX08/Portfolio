@@ -1,7 +1,8 @@
 import { 
   SiHtml5, SiCss3, SiJavascript, SiReact, SiTailwindcss, 
   SiNodedotjs, SiExpress, SiMongodb, 
-  SiGit, SiVercel, SiFigma 
+  SiGit, SiVercel, SiFigma, 
+  SiGithub
 } from "react-icons/si";
 
 const skillCategories = [
@@ -28,7 +29,7 @@ const skillCategories = [
     category: "Tools & Others",
     skills: [
       { name: "Git", icon: SiGit, color: "#F05032" },
-      { name: "Vercel", icon: SiVercel, color: "#000000" },
+      { name: "Github", icon: SiGithub, color: "#FFFFFFF" },
       { name: "Figma", icon: SiFigma, color: "#F24E1E" },
     ],
   },

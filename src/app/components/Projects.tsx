@@ -8,30 +8,32 @@ const projectsData = [
   {
     title: "Connecly",
     description:
-      "A personal portfolio to showcase my projects and skills, built with React and Tailwind CSS.",
+      "A skill-based networking platform that helps users build meaningful connections based on their skills, interests, and goals.",
     techStack: ["Tailwind CSS", "React", "Express", "Mongo DB", "Socket IO"],
     github: "https://github.com/SumanX08/Connectly",
     live: "https://connectly-mu.vercel.app/",
     image: "/connectly.png",
     features: [
-      "Responsive design",
-      "Dark mode toggle",
-      "Animated skill sections",
+          "Swipe-based Connect/Skip interface",
+    "Smart Filters by skills, location, and age",
+    "Real-time messaging with Socket.IO",
+    "Authentication with Auth0",
     ],
   },
-  {
-    title: "Chit Chat",
-    description:
-      "An online store with product listings, shopping cart, and checkout functionality.",
-    techStack: ["React", "Tailwind CSS", "Firebase"],
-    github: "https://github.com/SumanX08/ChitChat",
-    image: "/images/ecommerce.png",
-    features: [
-      "Product search and filtering",
-      "User authentication",
-      "Stripe payment integration",
-    ],
-  },
+{
+  title: "Chat App",
+  description:
+    "A real-time chat application with personal chats, group messaging, scheduled messages, and media sharing, built with React, TailwindCSS, and Firebase.",
+  techStack: ["React", "Tailwind CSS", "Firebase Auth", "Firestore", "Firebase Storage"],
+  github: "https://github.com/SumanX08/ChiChat", // replace with your repo link
+  image: "/ChitChat.png",
+  features: [
+    "Real-time 1-on-1 and group messaging",
+    "Scheduled messages with auto delivery",
+    "Delete messages for specific member in groups",
+    "Media/file sharing",
+  ],
+},
 
 ];
 
@@ -54,7 +56,7 @@ const Projects = () => {
     alt={project.title}
     width={1549}
     height={907}
-    className="w-auto h-full rounded-lg"
+    className="w-auto h-full rounded-3xl p-2 "
     priority
   />
 </div>
@@ -83,7 +85,6 @@ const Projects = () => {
                   <ul className="list-none text-gray-300 text-sm flex flex-col gap-1">
                     {project.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-2">
-                        <BsCheckCircle className="text-gray-300 w-4 h-4 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
