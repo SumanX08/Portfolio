@@ -1,16 +1,18 @@
 import React from "react";
 import { AiOutlineGithub, AiOutlineLink } from "react-icons/ai";
 import { BsCheckCircle } from "react-icons/bs";
+import Image from "next/image";
+
 
 const projectsData = [
   {
     title: "Connecly",
     description:
       "A personal portfolio to showcase my projects and skills, built with React and Tailwind CSS.",
-    techStack: [ "Tailwind CSS","React", "Express", "Mongo DB","Socket IO"],
+    techStack: ["Tailwind CSS", "React", "Express", "Mongo DB", "Socket IO"],
     github: "https://github.com/SumanX08/Connectly",
     live: "https://connectly-mu.vercel.app/",
-    image: "/images/portfolio.png",
+    image: "/connectly.png",
     features: [
       "Responsive design",
       "Dark mode toggle",
@@ -30,7 +32,7 @@ const projectsData = [
       "Stripe payment integration",
     ],
   },
-  
+
 ];
 
 const Projects = () => {
@@ -46,16 +48,18 @@ const Projects = () => {
             key={index}
             className="flex flex-col md:flex-row bg-black/20 rounded-xl shadow-[0_0_10px_#6b7280] border border-gray-500 overflow-hidden hover:scale-105 transition-transform"
           >
-            <div className="md:w-1/3">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full p-32   h-full object-cover"
-              />
-            </div>
-
+         <div className="flex items-center md:w-1/2">
+  <Image
+    src={project.image}
+    alt={project.title}
+    width={1549}
+    height={907}
+    className="w-auto h-full rounded-lg"
+    priority
+  />
+</div>
             {/* Right: Project Details */}
-            <div className="md:w-2/3 p-6 flex flex-col justify-between gap-4">
+            <div className="md:w-2/3 pl-6  py-6 flex flex-col justify-between gap-4">
               <div>
                 <h2 className="text-2xl font-semibold text-gray-200 mb-">
                   {project.title}
@@ -97,14 +101,14 @@ const Projects = () => {
                   <AiOutlineGithub className="w-4 h-4" />
                   GitHub
                 </a>
-                {project.live?<a href={project.live} target="_blank"
+                {project.live ? <a href={project.live} target="_blank"
                   className="inline-flex items-center gap-2 px-5 py-2 rounded-lg border border-gray-500 text-gray-200 font-medium shadow-[0_0_10px_#6b7280] hover:bg-gray-300 hover:text-black transition">
                   <AiOutlineLink className="w-4 h-4" />
                   Live Demo
-                </a>:<></>
+                </a> : <></>
 
                 }
-                
+
               </div>
             </div>
           </div>

@@ -64,7 +64,7 @@ const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
       href: undefined,
       target: undefined,
       rel: undefined,
-      onClick: (e: any) => e.preventDefault(),
+      onClick: (e: React.MouseEvent<HTMLAnchorElement>) => e.preventDefault(),
     },
   });
 };
@@ -85,7 +85,7 @@ export function IconsGlobe() {
 
       useEffect(() => {
     fetchSimpleIcons({ slugs: slugs }).then(setData);
-  }, [slugs]);
+  }, []);
 
     const renderedIcons = useMemo(() => {
     if (!data) return null;
