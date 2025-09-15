@@ -37,39 +37,43 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-    <div className="w-full mt-10">
-      <h1 className="text-2xl font-medium text-gray-200 mb-6 text-center">Skills</h1>
+  <div className="w-full mt-10">
+  <h1 className="text-2xl font-medium text-[var(--foreground)] mb-6 text-center">
+    Skills
+  </h1>
 
-      <div className="flex flex-col md:flex-row gap-6">
-        {skillCategories.map((category) => (
-          <div
-            key={category.category}
-            className="flex-1 bg-black/20 rounded-xl p-6 shadow-[0_0_10px_#6b7280] border border-gray-500  hover:scale-105 transition-transform"
-          >
-            <h2 className="text-xl font-semibold text-gray-200 mb-4 text-center">
-              {category.category}
-            </h2>
+  <div className="flex flex-col md:flex-row gap-6">
+    {skillCategories.map((category) => (
+      <div
+        key={category.category}
+        className="flex-1 bg-[var(--background)]/80 rounded-xl p-6 shadow-[0_0_10px_var(--shadow)]  hover:scale-105 transition-transform"
+      >
+        <h2 className="text-xl font-semibold text-[var(--foreground)] mb-4 text-center">
+          {category.category}
+        </h2>
 
-            {/* Grid with 3 columns */}
-            <div className="grid grid-cols-3 gap-4 justify-items-center">
-              {category.skills.map((skill) => {
-                const Icon = skill.icon;
-                return (
-                  <div
-                    key={skill.name}
-                    className="flex flex-col items-center gap-2 bg-black/30 p-3 rounded-lg shadow hover:scale-110 transition-transform w-full"
-                  >
-                    <Icon size={36} color={skill.color} />
-                    <p className="text-gray-200 text-sm text-center">{skill.name}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        ))}
+        {/* Grid with 3 columns */}
+        <div className="grid grid-cols-3 gap-4 justify-items-center">
+          {category.skills.map((skill) => {
+            const Icon = skill.icon;
+            return (
+              <div
+                key={skill.name}
+                className="flex flex-col items-center gap-2 p-3 rounded-lg shadow-[0_0_10px_var(--shadow)]hover:scale-110 transition-transform w-full"
+              >
+                <Icon size={36} color={skill.color} />
+                <p className="text-[var(--foreground)] text-sm text-center">
+                  {skill.name}
+                </p>
+              </div>
+            );
+          })}
+        </div>
       </div>
-      
-    </div>
+    ))}
+  </div>
+</div>
+
   );
 };
 

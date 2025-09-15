@@ -1,22 +1,24 @@
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f3f3f3;
+  --foreground: #000000;
+  --shadow: #323232;
+}
+
+/* Dark theme */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --shadow: #6b7280; /* can tweak if you want softer/darker */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-shadow: var(--shadow);
 }
 
 body {
@@ -24,5 +26,3 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-
-

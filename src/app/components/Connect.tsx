@@ -8,7 +8,7 @@ const Connect = () => {
       name: "GitHub",
       icon: <AiOutlineGithub className="w-6 h-6" />,
       url: "https://github.com/SumanX08",
-      color: "#ffffff",
+      color: "background",
     },
     {
       name: "LinkedIn",
@@ -31,33 +31,34 @@ const Connect = () => {
   ];
 
   return (
-    <div className="mt-12">
-      <h1 className="text-3xl font-bold text-gray-200 mb-8 text-center">
-        Connect with Me
-      </h1>
+   <div className="mt-12 ">
+  <h1 className="text-3xl font-bold text-[var(--foreground)] mb-8 text-center">
+    Connect with Me
+  </h1>
 
-      <div className="flex flex-col md:flex-row justify-around">
-        {/* Left: Contact Form */}
-        
-
-   
-<div className=" grid grid-cols-2  gap-8 place-items-center justify-around">
-  {links.map((link, index) => (
-    <a
-      key={index}
-      href={link.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={link.name}
-      className="flex flex-col   items-center justify-center w-28 h-28 rounded-lg shadow-[0_0_10px_#6b7280] hover:scale-110 transition-transform bg-black/30"
-    >
-      {React.cloneElement(link.icon, { color: link.color, size: 32 })}
-      <span className="text-gray-200 mt-2 text-sm">{link.name}</span>
-    </a>
-  ))}
-</div>
-      </div>
+  <div className="flex flex-col md:flex-row justify-around">
+    <div className="grid grid-cols-2 gap-8 place-items-center justify-around">
+      {links.map((link, index) => (
+        <a
+          key={index}
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={link.name}
+          className="flex flex-col items-center justify-center w-28 h-28 rounded-lg shadow-[0_0_10px_var(--shadow)] hover:scale-110 transition-transform bg-[var(--background)]/60"
+        >
+ {React.cloneElement(link.icon, {
+          color: link.color === "background" ? "var(--foreground)" : link.color,
+          size: 32,
+        })}          <span className="text-[var(--foreground)] mt-2 text-sm">
+            {link.name}
+          </span>
+        </a>
+      ))}
     </div>
+  </div>
+</div>
+
   );
 };
 

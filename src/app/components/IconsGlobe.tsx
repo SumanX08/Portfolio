@@ -1,24 +1,11 @@
-"use client"
+"use client";
 import { useEffect, useMemo, useState } from "react";
-import {Cloud,fetchSimpleIcons,ICloud,renderSimpleIcon,SimpleIcon,} from "react-icon-cloud";
+import { Cloud, fetchSimpleIcons, ICloud, renderSimpleIcon, SimpleIcon } from "react-icon-cloud";
+
 const slugs = [
-  "typescript",
-  "javascript",
-  "react",
-  "html5",
-  "css3",
-  "nodedotjs",
-  "express",
-  "nextdotjs",
-  "socketdotio",
-  "vercel",
-  "git",
-  "github",
-  "visualstudiocode",
-  "c",
-  "tailwindcss",
-  "mongodb",
-  "postman"
+  "typescript", "javascript", "react", "html5", "css3", "nodedotjs",
+  "express", "nextdotjs", "socketdotio", "vercel", "git", "github",
+  "visualstudiocode", "c", "tailwindcss", "mongodb", "postman"
 ];
 
 const cloudProps: Omit<ICloud, "children"> = {
@@ -29,7 +16,7 @@ const cloudProps: Omit<ICloud, "children"> = {
       alignItems: "center",
       width: "100%",
       paddingTop: 40,
-      margin:"auto"
+      margin: "auto",
     },
   },
   options: {
@@ -48,17 +35,13 @@ const cloudProps: Omit<ICloud, "children"> = {
   },
 };
 
-
 const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
-  const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
-  const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
-  const minContrastRatio = theme === "dark" ? 2 : 1.2;
+  const iconColor = theme === "light" ? "#000000" : "#ffffff";
+  const bgHex = theme === "light" ? "#ffffff" : "#0a0a0a";
 
   return renderSimpleIcon({
-    icon,
+    icon: { ...icon, hex: iconColor },
     bgHex,
-    fallbackHex,
-    minContrastRatio,
     size: 42,
     aProps: {
       href: undefined,
@@ -69,36 +52,21 @@ const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
   });
 };
 
-
-export type DynamicCloudProps = {
-  iconSlugs: string[];
+type IconsGlobeProps = {
+  theme: "light" | "dark";
 };
 
-type IconData = Awaited<ReturnType<typeof fetchSimpleIcons>>;
+export function IconsGlobe({ theme }: IconsGlobeProps) {
+  const [data, setData] = useState<Awaited<ReturnType<typeof fetchSimpleIcons>> | null>(null);
 
-
-
-
-
-export function IconsGlobe() {
-    const [data, setData] = useState<IconData | null>(null);
-
-      useEffect(() => {
-    fetchSimpleIcons({ slugs: slugs }).then(setData);
+  useEffect(() => {
+    fetchSimpleIcons({ slugs }).then(setData);
   }, []);
 
-    const renderedIcons = useMemo(() => {
+  const renderedIcons = useMemo(() => {
     if (!data) return null;
+    return Object.values(data.simpleIcons).map((icon) => renderCustomIcon(icon, theme));
+  }, [data, theme]);
 
-
-    return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon,"dark"),
-    );
-  }, [data, ]);
-  return (
-   
-        <Cloud  {...cloudProps}>
-      <>{renderedIcons}</>
-    </Cloud>
-  );
+  return <Cloud {...cloudProps}>{renderedIcons}</Cloud>;
 }
