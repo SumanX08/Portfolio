@@ -1,6 +1,8 @@
 import React from "react";
-import { AiOutlineGithub, AiOutlineLinkedin, AiOutlineTwitter } from "react-icons/ai";
+import { AiOutlineGithub, AiOutlineLinkedin,  } from "react-icons/ai";
 import { HiOutlineMail } from "react-icons/hi";
+import { FaSquareXTwitter } from "react-icons/fa6";
+
 
 const Connect = () => {
   const links = [
@@ -18,9 +20,9 @@ const Connect = () => {
     },
     {
       name: "Twitter",
-      icon: <AiOutlineTwitter className="w-6 h-6" />,
+      icon: <FaSquareXTwitter className="w-6 h-6" />,
       url: "https://x.com/Suman_twts",
-      color: "#1DA1F2",
+      color: "var(--foreground)",
     },
     {
       name: "Email",
@@ -31,7 +33,7 @@ const Connect = () => {
   ];
 
   return (
-   <div className="mt-12 ">
+   <div id="connect" className="mt-12 ">
   <h1 className="text-3xl font-bold text-[var(--foreground)] mb-8 text-center">
     Connect with Me
   </h1>
