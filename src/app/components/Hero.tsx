@@ -3,7 +3,7 @@ import { HiOutlineMail } from "react-icons/hi";
 import { GoLocation } from "react-icons/go";
 import { AiOutlineDownload, AiOutlineGithub } from "react-icons/ai";
 import { IconsGlobe } from "./IconsGlobe";
-import { th } from "framer-motion/client";
+import { motion } from "framer-motion";
 
 type HeroProps = {
   theme: "light" | "dark";
@@ -12,7 +12,7 @@ type HeroProps = {
 const Hero = ({ theme }: HeroProps) => {
   return (
     <section
-      id="home"
+      id="about"
       className="w-full mx-auto mt-24 md:grid grid-cols-3 justify-between items-center"
     >
       <div className="col-span-2 flex flex-col items-start gap-4">
@@ -42,25 +42,35 @@ const Hero = ({ theme }: HeroProps) => {
           designs with a futuristic touch and turning ideas into reality.
         </p>
 
-        <div className="mt-4 flex gap-4">
-          <a
-            href="https://drive.google.com/file/d/1ImG1CZgjt3fwoZNRet9PYfQR9AZtGZsP/view?usp=drive_link"
-            target="_blank"
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-foreground font-medium shadow-[0_0_15px_#6b7280]  hover:bg-foreground hover:text-background transition"
-          >
-            <AiOutlineDownload className="w-5 h-5" />
-            Resume
-          </a>
+      <div className="mt-4 flex gap-4">
+  <motion.a
+    href="https://drive.google.com/file/d/1ImG1CZgjt3fwoZNRet9PYfQR9AZtGZsP/view?usp=drive_link"
+    target="_blank"
+    className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-foreground font-medium shadow-[0_0_15px_#6b7280]"
+    whileHover={{
+      backgroundColor: "var(--foreground)", // change to your hover background
+      color: "var(--background)", // change to your hover text color
+      transition: { duration: 0.5,ease: "easeInOut" },
+    }}
+  >
+    <AiOutlineDownload className="w-5 h-5" />
+    Resume
+  </motion.a>
 
-          <a
-            href="https://github.com/SumanX08"
-            target="_blank"
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg  text-foreground font-medium shadow-[0_0_15px_#6b7280] hover:bg-foreground hover:text-background transition"
-          >
-            <AiOutlineGithub className="w-5 h-5" />
-            GitHub
-          </a>
-        </div>
+  <motion.a
+    href="https://github.com/SumanX08"
+    target="_blank"
+    className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-foreground font-medium shadow-[0_0_15px_#6b7280]"
+    whileHover={{
+      backgroundColor: "var(--foreground)", // hover background
+      color: "var(--background)", // hover text
+      transition: { duration: 0.5,ease: "easeInOut" },
+    }}
+  >
+    <AiOutlineGithub className="w-5 h-5" />
+    GitHub
+  </motion.a>
+</div>
       </div>
       <IconsGlobe theme={theme} />
     </section>
