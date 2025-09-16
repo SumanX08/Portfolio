@@ -1,8 +1,12 @@
+import { color } from "framer-motion";
 import { 
   SiHtml5, SiCss3, SiJavascript, SiReact, SiTailwindcss, 
   SiNodedotjs, SiExpress, SiMongodb, 
   SiGit, SiVercel, SiFigma, 
-  SiGithub
+  SiGithub,
+  SiTypescript,
+  SiFirebase,
+  SiNextdotjs
 } from "react-icons/si";
 
 const skillCategories = [
@@ -11,33 +15,35 @@ const skillCategories = [
     skills: [
       { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
       { name: "CSS3", icon: SiCss3, color: "#1572B6" },
-      { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
       { name: "React", icon: SiReact, color: "#61DAFB" },
       { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38B2AC" },
-      
+      { name: "Next.js", icon: SiNextdotjs, color: "var(--foreground)" }
+    ],
+  },
+  {
+    category: "Languages & Others",
+    skills: [
+      { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "Git", icon: SiGit, color: "#F05032" },
+      { name: "Github", icon: SiGithub, color: "var(--foreground)" },
     ],
   },
   {
     category: "Backend",
     skills: [
       { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
-      { name: "Express", icon: SiExpress, color: "#6b7280" },
+      { name: "Express", icon: SiExpress, color: "#6B7280" },
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+      { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
     ],
-  },
-  {
-    category: "Tools & Others",
-    skills: [
-      { name: "Git", icon: SiGit, color: "#F05032" },
-      { name: "Github", icon: SiGithub, color: "#FFFFFFF" },
-      { name: "Figma", icon: SiFigma, color: "#F24E1E" },
-    ],
-  },
+  }
 ];
+
 
 const Skills = () => {
   return (
-  <div className="w-full mt-10">
+  <div id="skills" className="w-full mt-10">
   <h1 className="text-2xl font-medium text-[var(--foreground)] mb-6 text-center">
     Skills
   </h1>
