@@ -2,7 +2,7 @@ import { color } from "framer-motion";
 import { 
   SiHtml5, SiCss3, SiJavascript, SiReact, SiTailwindcss, 
   SiNodedotjs, SiExpress, SiMongodb, 
-  SiGit, SiVercel, SiFigma, 
+  SiGit, SiVercel, 
   SiGithub,
   SiTypescript,
   SiFirebase,
