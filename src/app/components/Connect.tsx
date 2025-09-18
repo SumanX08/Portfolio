@@ -49,8 +49,10 @@ const Connect = () => {
           aria-label={link.name}
           className="flex flex-col items-center justify-center w-28 h-28 rounded-lg shadow-[0_0_10px_var(--shadow)] hover:scale-110 transition-transform bg-[var(--background)]/60"
         >
-          {React.cloneElement(link.icon, {color: link.color === "background" ? "var(--foreground)" : link.color, size: 32, })}          
-          <span className="text-[var(--foreground)] mt-2 text-sm">
+ {React.cloneElement(link.icon, {
+          color: link.color === "background" ? "var(--foreground)" : link.color,
+          size: 32,
+        })}          <span className="text-[var(--foreground)] mt-2 text-sm">
             {link.name}
           </span>
         </a>
