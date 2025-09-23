@@ -3,10 +3,10 @@ import { HiOutlineMail } from "react-icons/hi";
 import { GoLocation } from "react-icons/go";
 import { AiOutlineDownload, AiOutlineGithub } from "react-icons/ai";
 import { IconsGlobe } from "./IconsGlobe";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
 
 type HeroProps = {
-  theme: "light" | "dark";
+  theme: "light" | "dark"
 };
 
 const Hero = ({ theme }: HeroProps) => {
