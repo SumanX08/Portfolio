@@ -12,6 +12,17 @@ import Footer from "./components/Footer";
 import { Inter, Space_Grotesk } from "next/font/google";
 
 
+const setInitialTheme = `
+  (function() {
+    try {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.classList.add(theme);
+    } catch (e) {}
+  })();
+`;
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-body",
@@ -33,7 +44,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       setTheme(savedTheme);
       document.documentElement.classList.add(savedTheme);
     } else {
-      // fallback: system preference
       const prefersDark = window.matchMedia(
         "(prefers-color-scheme: dark)"
       ).matches;
@@ -43,7 +53,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     }
   }, []);
 
-  // 2️⃣ Every time theme changes, update <html> and localStorage
   useEffect(() => {
     if (!theme) return;
     const root = document.documentElement;
@@ -52,7 +61,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // 3️⃣ Toggle function
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
@@ -60,6 +68,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   if (!theme) return null;
   return (
     <html lang="en" className={`${inter.variable} ${grotesk.variable}`}>
+              <script dangerouslySetInnerHTML={{ __html: setInitialTheme }} />
+
       <body className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         <Hero theme={theme} />
