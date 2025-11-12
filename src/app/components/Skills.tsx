@@ -44,7 +44,7 @@ const skillCategories = [
 const Skills = () => {
   return (
   <div id="skills" className="w-full mt-10">
-  <h1 className="text-2xl font-medium text-[var(--foreground)] mb-6 text-center">
+  <h1 className="text-3xl font-bold text-[var(--foreground)] mb-6 text-center">
     Skills
   </h1>
 
@@ -54,7 +54,7 @@ const Skills = () => {
         key={category.category}
         className="flex-1 bg-[var(--background)]/80 rounded-xl p-6 shadow-[0_0_10px_var(--shadow)]  hover:scale-105 transition-transform"
       >
-        <h2 className="text-xl font-semibold text-[var(--foreground)] mb-4 text-center">
+        <h2 className="text-lg font-semibold text-[var(--foreground)] mb-4 text-center">
           {category.category}
         </h2>
 

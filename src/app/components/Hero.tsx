@@ -17,8 +17,8 @@ const Hero = ({ theme }: HeroProps) => {
     >
       <div className="col-span-2 flex flex-col items-start gap-4">
         <div className="flex flex-col gap-2">
-          <h1 className="text-5xl font-bold text-foreground">Suman</h1>
-          <h2 className="text-xl text-muted">Fullstack Developer</h2>
+          <h1 className="md:text-5xl text-3xl font-bold text-foreground">Suman</h1>
+          <h2 className="md:text-xl text-lg text-muted">Fullstack Developer</h2>
         </div>
 
         <div className="flex flex-col md:flex-row items-start sm:items-center gap-3 text-muted mt-3">
@@ -27,16 +27,16 @@ const Hero = ({ theme }: HeroProps) => {
             className="flex items-center gap-1 transition"
           >
             <HiOutlineMail className="w-5 h-5 " />
-            <span className="text-sm">sumanpreetsingh998@gmail.com</span>
+            <span className="md:text-sm text-xs">sumanpreetsingh998@gmail.com</span>
           </a>
 
           <div className="flex items-center gap-1">
             <GoLocation className="w-5 h-5" />
-            <span className="text-sm">Visakhapatnam, Andhra Pradesh</span>
+            <span className="md:text-sm text-xs">Visakhapatnam, Andhra Pradesh</span>
           </div>
         </div>
 
-        <p className="max-w-lg text-muted mt-3 leading-relaxed text-justify">
+        <p className="max-w-lg md:text-lg text-sm text-muted mt-3 leading-relaxed text-justify">
           I am a passionate web developer specializing in building modern,
           responsive, and user-friendly applications. I enjoy crafting clean
           designs with a futuristic touch and turning ideas into reality.
@@ -46,10 +46,10 @@ const Hero = ({ theme }: HeroProps) => {
   <motion.a
     href="https://drive.google.com/file/d/1ImG1CZgjt3fwoZNRet9PYfQR9AZtGZsP/view?usp=drive_link"
     target="_blank"
-    className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-foreground font-medium shadow-[0_0_15px_#6b7280]"
+    className="inline-flex items-center gap-2 px-5 py-2 rounded-lg font-medium shadow-[0_0_15px_#6b7280]"
     whileHover={{
-      backgroundColor: "var(--foreground)", // change to your hover background
-      color: "var(--background)", // change to your hover text color
+      backgroundColor: "var(--foreground)", 
+      color: "var(--background)", 
       transition: { duration: 0.5,ease: "easeInOut" },
     }}
   >
@@ -60,10 +60,10 @@ const Hero = ({ theme }: HeroProps) => {
   <motion.a
     href="https://github.com/SumanX08"
     target="_blank"
-    className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-foreground font-medium shadow-[0_0_15px_#6b7280]"
+    className="inline-flex items-center gap-2 px-5 py-2 rounded-lg  font-medium shadow-[0_0_15px_#6b7280]"
     whileHover={{
-      backgroundColor: "var(--foreground)", // hover background
-      color: "var(--background)", // hover text
+      backgroundColor: "var(--foreground)", 
+      color: "var(--background)",
       transition: { duration: 0.5,ease: "easeInOut" },
     }}
   >

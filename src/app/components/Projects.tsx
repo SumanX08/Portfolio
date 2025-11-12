@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 const projectsData = [
   {
-    title: "Connecly",
+    title: "Connectly",
     description:
       "A skill-based networking platform that helps users build meaningful connections based on their skills, interests, and goals.",
     techStack: ["Tailwind CSS", "React", "Express", "Mongo DB", "Socket IO"],
