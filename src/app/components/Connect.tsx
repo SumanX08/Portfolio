@@ -52,7 +52,7 @@ const Connect = () => {
  {React.cloneElement(link.icon, {
           color: link.color === "background" ? "var(--foreground)" : link.color,
           size: 32,
-        })}          <span className="text-[var(--foreground)] mt-2 text-sm">
+        })}          <span className="text-[var(--foreground)] mt-2 text-sm font-medium">
             {link.name}
           </span>
         </a>

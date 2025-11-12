@@ -26,7 +26,7 @@ const Hero = ({ theme }: HeroProps) => {
             href="mailto:sumanpreetsingh998@gmail.com"
             className="flex items-center gap-1 transition"
           >
-            <HiOutlineMail className="w-5 h-5 " />
+            <HiOutlineMail className="w-5 h-5" />
             <span className="md:text-sm text-xs">sumanpreetsingh998@gmail.com</span>
           </a>
 
@@ -42,36 +42,41 @@ const Hero = ({ theme }: HeroProps) => {
           designs with a futuristic touch and turning ideas into reality.
         </p>
 
-      <div className="mt-4 flex gap-4">
-  <motion.a
-    href="https://drive.google.com/file/d/1ImG1CZgjt3fwoZNRet9PYfQR9AZtGZsP/view?usp=drive_link"
-    target="_blank"
-    className="inline-flex items-center gap-2 px-5 py-2 rounded-lg font-medium shadow-[0_0_15px_#6b7280]"
-    whileHover={{
-      backgroundColor: "var(--foreground)", 
-      color: "var(--background)", 
-      transition: { duration: 0.5,ease: "easeInOut" },
-    }}
-  >
-    <AiOutlineDownload className="w-5 h-5" />
-    Resume
-  </motion.a>
+        <div className="mt-4 flex gap-4">
+          <motion.a
+            href="https://drive.google.com/file/d/1ImG1CZgjt3fwoZNRet9PYfQR9AZtGZsP/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-foreground font-medium shadow-[0_0_15px_var(--shadow)]"
+            whileHover={{
+              backgroundColor: "var(--foreground)",
+              color: "var(--background)",
+              transition: { duration: 0.5, ease: "easeInOut" },
+            }}
+            aria-label="Open resume in new tab"
+          >
+            <AiOutlineDownload className="w-5 h-5" />
+            Resume
+          </motion.a>
 
-  <motion.a
-    href="https://github.com/SumanX08"
-    target="_blank"
-    className="inline-flex items-center gap-2 px-5 py-2 rounded-lg  font-medium shadow-[0_0_15px_#6b7280]"
-    whileHover={{
-      backgroundColor: "var(--foreground)", 
-      color: "var(--background)",
-      transition: { duration: 0.5,ease: "easeInOut" },
-    }}
-  >
-    <AiOutlineGithub className="w-5 h-5" />
-    GitHub
-  </motion.a>
-</div>
+          <motion.a
+            href="https://github.com/SumanX08"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-foreground font-medium shadow-[0_0_15px_var(--shadow)]"
+            whileHover={{
+              backgroundColor: "var(--foreground)",
+              color: "var(--background)",
+              transition: { duration: 0.5, ease: "easeInOut" },
+            }}
+            aria-label="Open GitHub in new tab"
+          >
+            <AiOutlineGithub className="w-5 h-5" />
+            GitHub
+          </motion.a>
+        </div>
       </div>
+
       <IconsGlobe theme={theme} />
     </section>
   );

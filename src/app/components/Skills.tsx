@@ -1,12 +1,8 @@
-import { color } from "framer-motion";
 import { 
   SiHtml5, SiCss3, SiJavascript, SiReact, SiTailwindcss, 
   SiNodedotjs, SiExpress, SiMongodb, 
-  SiGit, SiVercel, SiFigma, 
-  SiGithub,
-  SiTypescript,
-  SiFirebase,
-  SiNextdotjs
+  SiGit, SiVercel, SiFigma, SiTypescript,SiNextdotjs,SiFirebase,
+  SiGithub
 } from "react-icons/si";
 
 const skillCategories = [
@@ -43,8 +39,8 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-  <div id="skills" className="w-full mt-10">
-  <h1 className="text-3xl font-bold text-[var(--foreground)] mb-6 text-center">
+  <div className="w-full mt-10">
+  <h1 className="text-2xl font-medium text-[var(--foreground)] mb-6 text-center">
     Skills
   </h1>
 
