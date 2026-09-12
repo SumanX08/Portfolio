@@ -47,7 +47,7 @@ const Hero = () => {
             <div className="absolute -inset-2 border border-[var(--border)]" />
 
             <div className="h-40 w-32 overflow-hidden border border-[var(--foreground)] bg-[var(--surface)] ">
-              <img
+              <Image
                 src="/profile.png"
                 alt="Suman Preet Singh Bagal"
                 className="h-full w-full object-cover grayscale"

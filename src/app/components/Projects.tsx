@@ -115,7 +115,7 @@ const Projects = () => {
           >
             {/* Image */}
             <div className="relative aspect-[16/9] overflow-hidden border-b border-[var(--border)] bg-[var(--surface)]">
-              <img
+              <Image
                 src={project.image}
                 alt={project.title}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.025]"

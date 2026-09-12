@@ -56,7 +56,7 @@ const Stack = () => {
         <h2>Tech Stack</h2>
 
         <span className="ml-auto hidden sm:block">
-          // TOOLS I WORK WITH
+           TOOLS I WORK WITH
         </span>
       </div>
 
