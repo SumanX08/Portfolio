@@ -7,6 +7,7 @@ import {
   Github,
   Globe,
 } from "lucide-react";
+import Image from "next/image";
 
 const projects = [
   {
@@ -94,7 +95,6 @@ const Projects = () => {
         <h2>Projects</h2>
 
         <span className="ml-auto hidden font-mono text-[10px] text-[var(--muted)] sm:block">
-          // SELECTED WORK
         </span>
       </div>
 

@@ -6,7 +6,6 @@ export default function Connect() {
       <div className="grid gap-8 py-10 md:grid-cols-[1fr_auto] md:items-center">
         <div>
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
-            // available for opportunities
           </p>
           <h2 className="mt-2 text-2xl font-semibold sm:text-3xl">
             Let&apos;s build something intelligent.
