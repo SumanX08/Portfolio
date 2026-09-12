@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -57,6 +58,7 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
 
         {/* Logo */}
         <button
+          type="button"
           onClick={() =>
             window.scrollTo({
               top: 0,
@@ -70,10 +72,10 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
 
         {/* Navigation */}
         <div className="hidden items-center gap-1 rounded-xl border border-[var(--border)] bg-[var(--surface)] p-1 md:flex">
-
           {sections.map((section) => (
             <button
               key={section}
+              type="button"
               onClick={() => handleClick(section)}
               className={`rounded-lg px-4 py-2 font-mono text-xs uppercase tracking-wider transition ${
                 activeSection === section
@@ -84,18 +86,12 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
               {section}
             </button>
           ))}
-
         </div>
 
-        {/* Right */}
+        {/* Right Controls */}
         <div className="flex items-center gap-2">
 
-
-    {/* Center - Section Buttons */}
-    <LayoutGroup>
-      <div className="flex items-center gap-3 sm:gap-8 text-sm md:text-lg bg-[var(--background)]/70 backdrop-blur-sm rounded-2xl px-4 md:px-6 py-2 md:py-3 shadow-[0_0_15px_var(--shadow)] text-[var(--foreground)]">
-        {sections.map((section) => (
-
+          {/* Search */}
           <button
             type="button"
             className="hidden items-center gap-2 rounded-xl border border-[var(--border)] px-3 py-2 font-mono text-xs text-[var(--muted)] transition hover:border-[var(--foreground)] hover:text-[var(--foreground)] sm:flex"
@@ -104,6 +100,7 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
             <span>Ctrl K</span>
           </button>
 
+          {/* Theme Toggle */}
           <button
             type="button"
             onClick={toggleTheme}
@@ -122,10 +119,10 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
           </button>
 
         </div>
-
       </nav>
     </header>
   );
 };
 
 export default Navbar;
+
