@@ -90,6 +90,12 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
         {/* Right */}
         <div className="flex items-center gap-2">
 
+
+    {/* Center - Section Buttons */}
+    <LayoutGroup>
+      <div className="flex items-center gap-3 sm:gap-8 text-sm md:text-lg bg-[var(--background)]/70 backdrop-blur-sm rounded-2xl px-4 md:px-6 py-2 md:py-3 shadow-[0_0_15px_var(--shadow)] text-[var(--foreground)]">
+        {sections.map((section) => (
+
           <button
             type="button"
             className="hidden items-center gap-2 rounded-xl border border-[var(--border)] px-3 py-2 font-mono text-xs text-[var(--muted)] transition hover:border-[var(--foreground)] hover:text-[var(--foreground)] sm:flex"

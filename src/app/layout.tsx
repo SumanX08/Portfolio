@@ -8,6 +8,17 @@ import Footer from "./components/Footer";
 
 import { Inter, Space_Grotesk } from "next/font/google";
 
+const setInitialTheme = `
+  (function() {
+    try {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.classList.add(theme);
+    } catch (e) {}
+  })();
+`;
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-body",
@@ -30,6 +41,15 @@ export default function RootLayout({
 
     if (savedTheme === "light" || savedTheme === "dark") {
       setTheme(savedTheme);
+
+      document.documentElement.classList.add(savedTheme);
+    } else {
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      const systemTheme = prefersDark ? "dark" : "light";
+      setTheme(systemTheme);
+      document.documentElement.classList.add(systemTheme);
     }
   }, []);
 
@@ -68,6 +88,16 @@ export default function RootLayout({
           </div>
 
         </div>
+    <html lang="en" className={`${inter.variable} ${grotesk.variable}`}>
+              <script dangerouslySetInnerHTML={{ __html: setInitialTheme }} />
+
+      <body className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Navbar theme={theme} toggleTheme={toggleTheme} />
+        <Hero theme={theme} />
+        <Projects />
+        <Skills />
+        <Connect />
+        <Footer />
       </body>
     </html>
   );
