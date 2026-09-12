@@ -1,94 +1,124 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, LayoutGroup } from "framer-motion";
+import { useEffect, useState } from "react";
+import { Moon, Sun, Search } from "lucide-react";
 
 type NavbarProps = {
   theme: "light" | "dark";
   toggleTheme: () => void;
 };
 
+const sections = ["about", "stack", "projects", "blogs"];
+
 const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
   const [activeSection, setActiveSection] = useState("about");
-  const sections = ["about", "projects", "skills", "contact"];
 
-  // Scroll into view on click
   const handleClick = (section: string) => {
-    const el = document.getElementById(section);
-    el?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById(section)?.scrollIntoView({
+      behavior: "smooth",
+    });
+
     setActiveSection(section);
   };
 
-  // Detect scroll position
   useEffect(() => {
     const handleScroll = () => {
-      let current = "home";
+      let current = "about";
+
       for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= window.innerHeight / 4/3 && rect.bottom >= window.innerHeight / 4/3) {
-            current = section;
-            break;
-          }
+        const element = document.getElementById(section);
+
+        if (!element) continue;
+
+        const rect = element.getBoundingClientRect();
+
+        if (
+          rect.top <= window.innerHeight * 0.3 &&
+          rect.bottom >= window.innerHeight * 0.3
+        ) {
+          current = section;
+          break;
         }
       }
+
       setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [sections]);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[var(--background)]/80 border-[var(--shadow)]">
-  <div className="max-w-5xl mx-auto flex justify-between items-center py-3 px-3 md:px-6">
-    {/* Left - Logo */}
-    <h1 className="text-3xl font-semibold text-[var(--foreground)] hidden sm:block">
-      Portfolio
-    </h1>
+    <header className="fixed left-0 top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background)]/90 backdrop-blur-xl">
+      <nav className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-5 lg:px-8">
 
-    {/* Center - Section Buttons */}
-    <LayoutGroup>
-      <div className="flex items-center gap-3 sm:gap-8 text-sm md:text-md bg-[var(--background)]/70 backdrop-blur-sm rounded-2xl px-4 md:px-6 py-2 md:py-3 shadow-[0_0_15px_var(--shadow)] text-[var(--foreground)]">
-        {sections.map((section) => (
+        {/* Logo */}
+        <button
+          onClick={() =>
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            })
+          }
+          className="font-mono text-lg font-bold tracking-[0.18em]"
+        >
+          SUMAN
+        </button>
+
+        {/* Navigation */}
+        <div className="hidden items-center gap-1 rounded-xl border border-[var(--border)] bg-[var(--surface)] p-1 md:flex">
+
+          {sections.map((section) => (
+            <button
+              key={section}
+              onClick={() => handleClick(section)}
+              className={`rounded-lg px-4 py-2 font-mono text-xs uppercase tracking-wider transition ${
+                activeSection === section
+                  ? "bg-[var(--foreground)] text-[var(--background)]"
+                  : "text-[var(--muted)] hover:text-[var(--foreground)]"
+              }`}
+            >
+              {section}
+            </button>
+          ))}
+
+        </div>
+
+        {/* Right */}
+        <div className="flex items-center gap-2">
+
           <button
-            key={section}
-            onClick={() => handleClick(section)}
-            className="relative px-2 py-1 cursor-pointer"
+            type="button"
+            className="hidden items-center gap-2 rounded-xl border border-[var(--border)] px-3 py-2 font-mono text-xs text-[var(--muted)] transition hover:border-[var(--foreground)] hover:text-[var(--foreground)] sm:flex"
           >
-            {section.charAt(0).toUpperCase() + section.slice(1)}
-            {activeSection === section && (
-              <motion.div
-                layoutId="underline"
-                className="absolute left-0 bottom-0 w-full bg-[var(--foreground)] rounded"
-                transition={{
-                  type: "tween",
-                  duration: 0.3,
-                  ease: "easeInOut",
-                }}
-              />
+            <Search size={15} />
+            <span>Ctrl K</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label={
+              theme === "dark"
+                ? "Switch to light mode"
+                : "Switch to dark mode"
+            }
+            className="rounded-xl border border-[var(--border)] p-2.5 text-[var(--foreground)] transition hover:border-[var(--foreground)]"
+          >
+            {theme === "dark" ? (
+              <Sun size={17} />
+            ) : (
+              <Moon size={17} />
             )}
           </button>
-        ))}
-      </div>
-    </LayoutGroup>
 
-    {/* Right - Theme Toggle */}
-    <motion.button
-      whileHover={{
-        backgroundColor: "var(--foreground)",
-        color: "var(--background)",
-        transition: { duration: 0.3, ease: "easeInOut" },
-      }}
-      onClick={toggleTheme}
-      className="ml-3 md:ml-6 bg-[var(--background)] px-3 py-2 rounded-lg shadow-[0_0_15px_var(--shadow)] cursor-pointer text-[var(--foreground)]"
-    >
-      {theme === "light" ? "🌙" : "☀️"}
-    </motion.button>
-  </div>
-</nav>
+        </div>
 
+      </nav>
+    </header>
   );
 };
 

@@ -1,16 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import "./globals.css";
 
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import './globals.css'
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Connect from "./components/Connect";
 import Footer from "./components/Footer";
-import { Inter, Space_Grotesk } from "next/font/google";
 
+import { Inter, Space_Grotesk } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,51 +18,56 @@ const grotesk = Space_Grotesk({
   variable: "--font-heading",
 });
 
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
- useEffect(() => {
+  useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
+
     if (savedTheme === "light" || savedTheme === "dark") {
       setTheme(savedTheme);
-      document.documentElement.classList.add(savedTheme);
-    } else {
-      // fallback: system preference
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      const systemTheme = prefersDark ? "dark" : "light";
-      setTheme(systemTheme);
-      document.documentElement.classList.add(systemTheme);
     }
   }, []);
 
-  // 2️⃣ Every time theme changes, update <html> and localStorage
   useEffect(() => {
-    if (!theme) return;
     const root = document.documentElement;
-    root.classList.remove(theme === "light" ? "dark" : "light");
+
+    root.classList.remove("light", "dark");
     root.classList.add(theme);
+
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // 3️⃣ Toggle function
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setTheme((current) =>
+      current === "dark" ? "light" : "dark"
+    );
   };
 
-  if (!theme) return null;
   return (
-    <html lang="en" className={`${inter.variable} ${grotesk.variable}`}>
-      <body className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Navbar theme={theme} toggleTheme={toggleTheme} />
-        <Hero theme={theme} />
-        <Projects />
-        <Skills />
-        <Connect />
-        <Footer />
+    <html
+      lang="en"
+      className={`${inter.variable} ${grotesk.variable}`}
+    >
+      <body>
+        <div className="site-shell">
+
+          <Navbar
+            theme={theme}
+            toggleTheme={toggleTheme}
+          />
+
+          <div className="mx-auto max-w-[1000px] px-4 sm:px-6 lg:px-8">
+            {children}
+
+            <Footer />
+          </div>
+
+        </div>
       </body>
     </html>
   );

@@ -1,141 +1,239 @@
-import React from "react";
-import { AiOutlineGithub } from "react-icons/ai";
-import { FiExternalLink } from "react-icons/fi";
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
 import { motion } from "framer-motion";
+import {
+  ArrowUpRight,
+  Github,
+  Globe,
+} from "lucide-react";
 
-
-
-const projectsData = [
+const projects = [
   {
+    number: "01",
+    title: "NoteSpace AI",
+    description:
+      "A production-grade RAG system with semantic reranking, hybrid retrieval, multi-source ingestion, and source-cited answers.",
+    technologies: ["React", "Node.js", "MongoDB", "Qdrant"],
+    image: "/notespace.png",
+    github: "#",
+    live: "#",
+    status: "Building",
+  },
+  {
+    number: "02",
+    title: "Maya-Agent",
+    description:
+      "Open-source AI Agent SDK with modular support for LLM agents, function calling, tools, memory and multi-agent workflows.",
+    technologies: ["JavaScript", "OpenAI", "Zod", "Node.js"],
+    image: "/maya-agent.png",
+    github: "#",
+    live: "#",
+    status: "Building",
+  },
+  {
+    number: "03",
     title: "Connectly",
     description:
-      "A skill-based networking platform that helps users build meaningful connections based on their skills, interests, and goals.",
-    techStack: ["Tailwind CSS", "React", "Express", "Mongo DB", "Socket IO"],
+      "A skill-based networking platform with real-time messaging, user matching and efficient backend APIs.",
+    technologies: ["React", "Node.js", "MongoDB", "Socket.IO"],
+    image: "/connectly.png",
     github: "https://github.com/SumanX08/Connectly",
     live: "https://connectly-mu.vercel.app/",
-    image: "/connectly.png",
-    features: [
-      "Swipe-based Connect/Skip interface",
-      "Smart Filters by skills, location, and age",
-      "Real-time messaging with Socket.IO",
-      "Authentication with Auth0",
-    ],
+    status: "Operational",
   },
   {
-    title: "Chat App",
+    number: "04",
+    title: "Mimic AI",
     description:
-      "A real-time chat application with personal chats, group messaging, scheduled messages, and media sharing, built with React, TailwindCSS, and Firebase.",
-    techStack: ["React", "Tailwind CSS", "Firebase Auth", "Firestore", "Firebase Storage"],
-    github: "https://github.com/SumanX08/ChiChat", // replace with your repo link
-    image: "/ChitChat.png",
-    features: [
-      "Real-time 1-on-1 and group messaging",
-      "Scheduled messages with auto delivery",
-      "Delete messages for specific member in groups",
-      "Media/file sharing",
-    ],
+      "Persona-based AI conversation platform for interacting with custom AI personalities through LLM-powered conversations.",
+    technologies: ["React", "Node.js", "OpenAI", "LLMs"],
+    image: "/mimic-ai.png",
+    github: "#",
+    live: "#",
+    status: "Operational",
   },
-
+  {
+    number: "05",
+    title: "Self-Consistency",
+    description:
+      "Multi-model answer engine that combines responses from multiple LLMs and uses an evaluator to produce more reliable answers.",
+    technologies: ["OpenAI", "Gemini", "Claude", "Groq"],
+    image: "/self-consistency.png",
+    github: "#",
+    live: "#",
+    status: "Building",
+  },
+  {
+    number: "06",
+    title: "TinyLink",
+    description:
+      "A modern URL shortening application designed with a clean interface and efficient backend architecture.",
+    technologies: ["Next.js", "Node.js", "MongoDB", "Tailwind"],
+    image: "/tinylink.png",
+    github: "#",
+    live: "#",
+    status: "Operational",
+  },
 ];
 
 const Projects = () => {
-  return (
-    <div id="projects" className="mt-10">
-      <h1 className="text-3xl font-bold text-[var(--foreground)] mb-8 text-center">
-        Projects
-      </h1>
+  const [showAll, setShowAll] = useState(false);
 
-      <div className="flex flex-col gap-12">
-        {projectsData.map((project, index) => (
-          <div
-            key={index}
-            className="flex flex-col md:flex-row bg-[var(--background)]/80 rounded-xl shadow-[0_0_20px_var(--shadow)]  overflow-hidden hover:scale-105 transition-transform"
+  const visibleProjects = showAll
+    ? projects
+    : projects.slice(0, 4);
+
+  return (
+    <section
+      id="projects"
+      className="border-x border-b border-[var(--border)]"
+    >
+      {/* Section heading */}
+      <div className="section-heading">
+        <h2>Projects</h2>
+
+        <span className="ml-auto hidden font-mono text-[10px] text-[var(--muted)] sm:block">
+          // SELECTED WORK
+        </span>
+      </div>
+
+      {/* Project grid */}
+      <div className="grid grid-cols-1 gap-3 p-3 sm:grid-cols-2">
+        {visibleProjects.map((project, index) => (
+          <motion.article
+            key={project.number}
+            initial={
+              showAll && index >= 4
+                ? { opacity: 0, y: 15 }
+                : false
+            }
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35 }}
+            whileHover={{ y: -2 }}
+            className="group overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--background)]"
           >
-            {/* Left: Image */}
-            <div className="flex items-center md:w-1/2">
-              <Image
+            {/* Image */}
+            <div className="relative aspect-[16/9] overflow-hidden border-b border-[var(--border)] bg-[var(--surface)]">
+              <img
                 src={project.image}
                 alt={project.title}
-                width={1549}
-                height={907}
-                className="w-auto h-full rounded-3xl p-2"
-                priority
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.025]"
               />
+
+              <span className="absolute left-2 top-2 rounded-md border border-[var(--border)] bg-[var(--background)]/90 px-2 py-1 font-mono text-[9px] text-[var(--muted)] backdrop-blur-sm">
+                {project.number}
+              </span>
             </div>
 
-            {/* Right: Project Details */}
-            <div className="md:w-2/3 pl-6 py-6 flex flex-col justify-between gap-4">
-              <div>
-                <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+            {/* Content */}
+            <div className="p-3.5">
+
+              {/* Title + links */}
+              <div className="flex items-center justify-between gap-2">
+                <h3 className="truncate font-mono text-sm font-bold">
                   {project.title}
-                </h2>
-                <p className="text-[var(--foreground)]/80 mb-2">
-                  {project.description}
+                </h3>
+
+                <div className="flex shrink-0 items-center gap-1">
+
+                  {project.live !== "#" && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Open ${project.title}`}
+                      className="rounded-md border border-[var(--border)] p-1.5 text-[var(--muted)] transition hover:border-[var(--foreground)] hover:text-[var(--foreground)]"
+                    >
+                      <Globe size={12} />
+                    </a>
+                  )}
+
+                  {project.github !== "#" && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`GitHub ${project.title}`}
+                      className="rounded-md border border-[var(--border)] p-1.5 text-[var(--muted)] transition hover:border-[var(--foreground)] hover:text-[var(--foreground)]"
+                    >
+                      <Github size={12} />
+                    </a>
+                  )}
+
+                </div>
+              </div>
+
+              {/* Description */}
+              <p className="mt-2 line-clamp-3 text-[11px] leading-[1.55] text-[var(--muted)]">
+                {project.description}
+              </p>
+
+              {/* Technologies */}
+              <div className="mt-3">
+                <p className="mb-1.5 font-mono text-[8px] uppercase tracking-wider text-[var(--muted)]">
+                  Technologies
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-2">
-                  {project.techStack.map((tech, idx) => (
+                <div className="flex flex-wrap gap-1.5">
+                  {project.technologies.map((technology) => (
                     <span
-                      key={idx}
-                      className="text-sm shadow-[0_0_5px_var(--shadow)] border border-[var(--shadow)] px-2 py-1 rounded-xl text-[var(--foreground)]"
+                      key={technology}
+                      className="rounded-md border border-[var(--border)] bg-[var(--surface)] px-2 py-1 font-mono text-[8px] text-[var(--muted)]"
                     >
-                      {tech}
+                      {technology}
                     </span>
                   ))}
                 </div>
-
-                {/* Features */}
-                <div>
-                  <h3 className="text-[var(--foreground)] font-semibold mb-1">
-                    Features:
-                  </h3>
-                  <ul className="list-none text-[var(--foreground)]/80 text-sm flex flex-col gap-1">
-                    {project.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
 
-              {/* Links */}
-              <div className="flex gap-5">
-                <motion.a
-                  whileHover={{
-                    backgroundColor: "var(--foreground)", // hover background
-                    color: "var(--background)", // hover text
-                    transition: { duration: 0.5, ease: "easeInOut" },
-                  }}
-                  href={project.github}
-                  target="_blank"
-                  className="inline-flex items-center gap-2 px-5 py-2 rounded-lg  text-[var(--foreground)] font-medium shadow-[0_0_10px_var(--shadow)]  "
-                >
-                  <AiOutlineGithub className="w-6 h-6  " />
-                </motion.a>
+              {/* Bottom */}
+              <div className="mt-3 flex items-center justify-between border-t border-[var(--border)] pt-2.5">
 
-                {project.live && (
-                  <motion.a
-                   whileHover={{
-                    backgroundColor: "var(--foreground)", 
-                    color: "var(--background)", 
-                    transition: { duration: 0.5, ease: "easeInOut" },
-                  }}
-                    href={project.live}
-                    target="_blank"
-                    className="inline-flex items-center gap-2 px-5 py-2 rounded-lg  text-[var(--foreground)] font-medium shadow-[0_0_10px_var(--shadow)] "
-                  >
-                    <FiExternalLink className="w-6 h-6" />
-                  </motion.a>
-                )}
+                <span className="flex items-center gap-1.5 font-mono text-[8px] text-[var(--muted)]">
+                  <span
+                    className={`h-1.5 w-1.5 rounded-full ${
+                      project.status === "Operational"
+                        ? "bg-emerald-500"
+                        : "bg-pink-500"
+                    }`}
+                  />
+
+                  {project.status}
+                </span>
+
+                <button
+                  type="button"
+                  className="flex items-center gap-1 font-mono text-[8px] text-[var(--muted)] transition-all hover:gap-2 hover:text-[var(--foreground)]"
+                >
+                  View Details
+                  <ArrowUpRight size={11} />
+                </button>
+
               </div>
             </div>
-          </div>
+          </motion.article>
         ))}
       </div>
-    </div>
 
+      {/* Load more */}
+      {!showAll && projects.length > 4 && (
+        <div className="flex justify-center border-t border-[var(--border)] p-5">
+          <button
+            type="button"
+            onClick={() => setShowAll(true)}
+            className="group flex items-center gap-2 rounded-md border border-[var(--border)] px-5 py-2.5 font-mono text-[10px] uppercase tracking-wider text-[var(--muted)] transition hover:border-[var(--foreground)] hover:bg-[var(--foreground)] hover:text-[var(--background)]"
+          >
+            Load More Projects
+
+            <ArrowUpRight
+              size={13}
+              className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </button>
+        </div>
+      )}
+    </section>
   );
 };
 
