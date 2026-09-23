@@ -49,8 +49,10 @@ const Hero = () => {
 
             <div className="h-40 w-32 overflow-hidden border border-[var(--foreground)] bg-[var(--surface)] ">
               <Image
-                src="/profile.png"
+                src="/profile.jpeg"
                 alt="Suman Preet Singh Bagal"
+                width={128}
+  height={160}
                 className="h-full w-full object-cover grayscale"
               />
             </div>

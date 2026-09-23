@@ -17,9 +17,9 @@ const projects = [
       "A production-grade RAG system with semantic reranking, hybrid retrieval, multi-source ingestion, and source-cited answers.",
     technologies: ["React", "Node.js", "MongoDB", "Qdrant"],
     image: "/notespace.png",
-    github: "#",
-    live: "#",
-    status: "Building",
+    github: "https://github.com/SumanX08/NoteSpaceAi",
+    live: "https://note-space-ai.vercel.app/",
+    status: "operational",
   },
   {
     number: "02",
@@ -28,8 +28,8 @@ const projects = [
       "Open-source AI Agent SDK with modular support for LLM agents, function calling, tools, memory and multi-agent workflows.",
     technologies: ["JavaScript", "OpenAI", "Zod", "Node.js"],
     image: "/maya-agent.png",
-    github: "#",
-    live: "#",
+    github: "https://github.com/SumanX08/Maya-Agent",
+    live: "https://maya-agent-nu.vercel.app/",
     status: "Building",
   },
   {
@@ -50,8 +50,8 @@ const projects = [
       "Persona-based AI conversation platform for interacting with custom AI personalities through LLM-powered conversations.",
     technologies: ["React", "Node.js", "OpenAI", "LLMs"],
     image: "/mimic-ai.png",
-    github: "#",
-    live: "#",
+    github: "https://github.com/SumanX08/MimicAi",
+    live: "https://mimic-ai-by-suman.vercel.app/",
     status: "Operational",
   },
   {
@@ -61,8 +61,8 @@ const projects = [
       "Multi-model answer engine that combines responses from multiple LLMs and uses an evaluator to produce more reliable answers.",
     technologies: ["OpenAI", "Gemini", "Claude", "Groq"],
     image: "/self-consistency.png",
-    github: "#",
-    live: "#",
+    github: "https://github.com/SumanX08/Self_Consistency_Engine",
+    live: "https://self-consistency-engine-seven.vercel.app/",
     status: "Building",
   },
   {
@@ -118,6 +118,8 @@ const Projects = () => {
               <Image
                 src={project.image}
                 alt={project.title}
+                  width={800}
+  height={500}  
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.025]"
               />
 

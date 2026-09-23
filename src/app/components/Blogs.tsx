@@ -3,21 +3,21 @@ import { ArrowUpRight, FileText } from "lucide-react";
 const blogs = [
   {
     number: "01",
-    title: "Building RAG Applications",
+    title: "Where RAG Fails: Understand the Limitations",
     description:
       "Notes and learnings from building retrieval-augmented generation systems and intelligent knowledge applications.",
     date: "2026",
     tags: ["RAG", "GenAI", "Vector Search"],
-    href: "#",
+    href: "https://btsofai.hashnode.dev/rag-s",
   },
   {
     number: "02",
-    title: "State Management in React",
+    title: "What Really Happens After You Press Enter in ChatGPT?",
     description:
-      "Understanding practical approaches to managing state in modern React applications.",
+      "Understanding how LLM's work",
     date: "2026",
-    tags: ["React", "JavaScript", "Zustand"],
-    href: "#",
+    tags: ["ChatGpt", "LLM", "Prompting"],
+    href: "https://btsofai.hashnode.dev/what-really-happens-after-you-press-enter-in-chatgpt",
   },
 ];
 
