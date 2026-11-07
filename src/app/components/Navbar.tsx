@@ -67,7 +67,7 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
           }
           className="font-mono text-lg font-bold tracking-[0.18em]"
         >
-          SUMAN
+           {'<SUMAN/>'}
         </button>
 
         {/* Navigation */}
