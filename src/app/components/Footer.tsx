@@ -33,7 +33,7 @@ const Footer = () => {
         <span>© 2026 Suman Preet Singh Bagal</span>
 
         <span>
-          Built with Next.js & React
+          Built with Next.js 
         </span>
       </div>
 

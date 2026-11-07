@@ -11,7 +11,25 @@ import Image from "next/image";
 
 const projects = [
   {
-    number: "01",
+  number: "01",
+  title: "OffScripter",
+  description:
+    "An AI-powered speaking practice platform that helps developers and students improve technical communication through random tech challenges, timed speaking sessions, and detailed AI-driven feedback.",
+  technologies: [
+    "React",
+    "TypeScript",
+    "Node.js",
+    "Express",
+    "PostgreSQL",
+    "Prisma",
+  ],
+  image: "/offscripter.png",
+  github: "https://github.com/SumanX08/",
+  live: "https://offscripter.suman08.in",
+  status: "Operational",
+},
+  {
+    number: "02",
     title: "NoteSpace AI",
     description:
       "A production-grade RAG system with semantic reranking, hybrid retrieval, multi-source ingestion, and source-cited answers.",
@@ -19,21 +37,21 @@ const projects = [
     image: "/notespace.png",
     github: "https://github.com/SumanX08/NoteSpaceAi",
     live: "https://note-space-ai.vercel.app/",
-    status: "operational",
+    status: "Operational",
   },
   {
-    number: "02",
+    number: "03",
     title: "Maya-Agent",
     description:
       "Open-source AI Agent SDK with modular support for LLM agents, function calling, tools, memory and multi-agent workflows.",
     technologies: ["JavaScript", "OpenAI", "Zod", "Node.js"],
-    image: "/maya-agent.png",
+    image: "/mayagent.png",
     github: "https://github.com/SumanX08/Maya-Agent",
     live: "https://maya-agent-nu.vercel.app/",
-    status: "Building",
+    status: "Operational",
   },
   {
-    number: "03",
+    number: "04",
     title: "Connectly",
     description:
       "A skill-based networking platform with real-time messaging, user matching and efficient backend APIs.",
@@ -44,7 +62,7 @@ const projects = [
     status: "Operational",
   },
   {
-    number: "04",
+    number: "05",
     title: "Mimic AI",
     description:
       "Persona-based AI conversation platform for interacting with custom AI personalities through LLM-powered conversations.",
@@ -55,7 +73,7 @@ const projects = [
     status: "Operational",
   },
   {
-    number: "05",
+    number: "06",
     title: "Self-Consistency",
     description:
       "Multi-model answer engine that combines responses from multiple LLMs and uses an evaluator to produce more reliable answers.",
@@ -63,10 +81,10 @@ const projects = [
     image: "/self-consistency.png",
     github: "https://github.com/SumanX08/Self_Consistency_Engine",
     live: "https://self-consistency-engine-seven.vercel.app/",
-    status: "Building",
+    status: "Operational",
   },
   {
-    number: "06",
+    number: "07",
     title: "TinyLink",
     description:
       "A modern URL shortening application designed with a clean interface and efficient backend architecture.",

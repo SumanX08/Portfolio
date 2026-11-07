@@ -2,14 +2,13 @@ const skillGroups = [
   {
     number: "01",
     title: "Languages",
-    skills: ["JavaScript", "TypeScript", "Python", "Java", "HTML", "CSS"],
+    skills: ["JavaScript", "TypeScript", "Java"],
   },
   {
     number: "02",
     title: "Frontend",
     skills: [
       "React",
-      "Next.js",
       "Tailwind CSS",
       "Framer Motion",
       "Zustand",
@@ -24,7 +23,8 @@ const skillGroups = [
       "REST APIs",
       "WebSockets",
       "Inngest",
-      "MongoDB"
+      "MongoDB",
+      "PostgreSQL"
     ],
   },
   {
