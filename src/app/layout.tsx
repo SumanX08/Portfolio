@@ -6,6 +6,7 @@ import "./globals.css";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { Analytics } from "@vercel/analytics/next";
 
 import { Inter, Space_Grotesk } from "next/font/google";
 
@@ -73,6 +74,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </div>
+        <Analytics />
       </body>
     </html>
   );
